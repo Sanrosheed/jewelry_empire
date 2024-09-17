@@ -1,3 +1,5 @@
+"use client";
+import { motion } from "framer-motion";
 import React from "react";
 import Image from "next/image";
 import logo from "../../../public/logo.png";
@@ -5,7 +7,12 @@ import Link from "next/link";
 
 const NavBar = () => {
   return (
-    <div className="flex flex-col items-center gap-6">
+    <motion.div
+      initial={{ y: -250 }}
+      animate={{ y: 0 }}
+      transition={{ type: "spring", duration: 1.5, delay: 0 }}
+      className="flex flex-col items-center gap-6"
+    >
       <Image src={logo} alt="" />
 
       <nav className="flex flex-row items-center gap-10 uppercase">
@@ -105,7 +112,7 @@ const NavBar = () => {
           <span className="absolute inset-x-0 bottom-0 h-0.5 bg-[#E8CF36] transform scale-x-0 origin-left transition-transform group-hover:scale-x-100"></span>
         </Link>
       </nav>
-    </div>
+    </motion.div>
   );
 };
 

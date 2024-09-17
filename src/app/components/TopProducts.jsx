@@ -9,10 +9,24 @@ import neck3 from "../../../public/neck3.png";
 import neck4 from "../../../public/neck4.png";
 import { FaStar } from "react-icons/fa";
 import { FaRegStar } from "react-icons/fa";
+import { motion } from "framer-motion";
 
+const containerVariants = {
+  hidden: { opacity: 0, y: 75 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 50, duration: 10, delay: 0.4 },
+  },
+};
 const TopProducts = () => {
   return (
-    <div className="m-8">
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      className="m-8"
+    >
       <div className="flex flex-row justify-between">
         <h1>Top Products</h1>
         <div className="flex">
@@ -56,7 +70,7 @@ const TopProducts = () => {
           star={<FaStar />}
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

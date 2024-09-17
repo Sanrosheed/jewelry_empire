@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -5,10 +6,23 @@ import { FaEnvelope, FaPhoneAlt } from "react-icons/fa";
 import { LuMessageSquare } from "react-icons/lu";
 import { FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
 import GooglePlay from "../../../public/googlePlay.png";
+import { motion } from "framer-motion";
 
+const containerVariants = {
+  hidden: { opacity: 0, y: 75 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 50, duration: 10, delay: 0.4 },
+  },
+};
 const Footer = () => {
   return (
-    <div>
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+    >
       <div className="flex flex-col md:flex-row gap-6 justify-between mx-16 my-12">
         <div className="flex flex-col gap-2">
           <h1 className="text-[#E8CF36] text-xl mb-4">Useful Links</h1>
@@ -196,7 +210,7 @@ const Footer = () => {
         @ 2023 Jewelery Empire Company Limited. All Right Reserved. <br /> Term
         & Conditions | Privacy Policy
       </h1>
-    </div>
+    </motion.div>
   );
 };
 

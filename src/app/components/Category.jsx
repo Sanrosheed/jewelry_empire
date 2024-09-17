@@ -1,3 +1,5 @@
+"use client";
+import { motion } from "framer-motion";
 import React from "react";
 import CategoryCard from "../layouts/CategoryCard";
 import Cat1 from "../../../public/cat1.png";
@@ -11,9 +13,22 @@ import Cat8 from "../../../public/cat8.png";
 import Cat9 from "../../../public/cat9.png";
 import Cat10 from "../../../public/cat10.png";
 
+const containerVariants = {
+  hidden: { opacity: 0, y: 75 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 50, duration: 10, delay: 0.4 },
+  },
+};
 const Category = () => {
   return (
-    <div className="mx-8 flex flex-col items-center">
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      className="mx-8 flex flex-col items-center"
+    >
       <div className="mx-auto my-6 text-center">
         <h1 className="text-4xl text-[#E8CF36] font-semibold mb-3">
           Shop By Category
@@ -34,7 +49,7 @@ const Category = () => {
         <CategoryCard img={Cat9} title="Gold Coins" />
         <CategoryCard img={Cat10} title="New Earrings" />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

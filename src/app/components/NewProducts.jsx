@@ -1,3 +1,5 @@
+"use client";
+import { motion } from "framer-motion";
 import React from "react";
 import Link from "next/link";
 import { IoIosArrowRoundForward } from "react-icons/io";
@@ -9,9 +11,22 @@ import NewProd2 from "../../../public/newprod2.png";
 import NewProd3 from "../../../public/newprod3.png";
 import NewProd4 from "../../../public/newprod4.png";
 
+const containerVariants = {
+  hidden: { opacity: 0, y: 75 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: "spring", stiffness: 50, duration: 10, delay: 0.4 },
+  },
+};
 const NewProducts = () => {
   return (
-    <div className="m-8">
+    <motion.div
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      className="m-8"
+    >
       <div className="flex flex-row justify-between">
         <h1>Top Products</h1>
         <div className="flex">
@@ -55,7 +70,7 @@ const NewProducts = () => {
           star={<FaStar />}
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
